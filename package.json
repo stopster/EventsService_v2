@@ -1,0 +1,25 @@
+{
+  "name": "expapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "St",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-develop-server": "^0.5.2",
+    "gulp-jshint": "^2.0.4",
+    "jshint": "^2.9.4",
+    "mocha": "^3.4.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "node-mysql": "^0.4.2",
+    "npmlog": "^4.1.0"
+  }
+}
