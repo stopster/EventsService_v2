@@ -1,0 +1,215 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PlayBuzz event service test task",
+		"_postman_id": "c5a873dc-be28-159b-40df-0c6b9e5c8a64",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST event 1",
+			"request": {
+				"url": "localhost:3000/events",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Referrer",
+						"value": "test",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"timestamp\": 1495439502122,\r\n\t\"userId\": \"user9b21f2\",\r\n\t\"pageId\": \"page7be424\",\r\n\t\"pageReferer\": \"localhost\",\r\n\t\"pageUrl\": \"/\",\r\n\t\"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36\",\r\n\t\"screenResolution\": \"1280x720\",\r\n\t\"userIP\": \"127.0.0.1\"\r\n}"
+				},
+				"description": "chrome user"
+			},
+			"response": []
+		},
+		{
+			"name": "POST event 2",
+			"request": {
+				"url": "localhost:3000/events",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"userId\": \"user0021f833\",\r\n\t\"pageId\": \"page22e12212\",\r\n\t\"pageReferer\": \"google.com\",\r\n\t\"userAgent\": \"Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0\",\r\n\t\"pageUrl\": \"coolFeed.com\",\r\n\t\"screenResolution\": \"1920x1080\",\r\n\t\"userIP\": \"133.152.152.12\"\r\n}"
+				},
+				"description": "chrome user"
+			},
+			"response": []
+		},
+		{
+			"name": "POST event 3",
+			"request": {
+				"url": "localhost:3000/events",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"timestamp\": 1495439504230,\r\n\t\"userId\": \"user9b222827\",\r\n\t\"pageId\": \"page7be422cf\",\r\n\t\"pageReferer\": \"amazon.com\",\r\n\t\"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36\",\r\n\t\"screenResolution\": \"1280x720\",\r\n\t\"userIP\": \"8.8.8.8\"\r\n}"
+				},
+				"description": "firefox user"
+			},
+			"response": []
+		},
+		{
+			"name": "POST event 4",
+			"request": {
+				"url": "localhost:8080/event",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Safari/53.36\",\r\n\t\"userIP\": \"93.18.58.18\"\r\n}"
+				},
+				"description": "safari user"
+			},
+			"response": []
+		},
+		{
+			"name": "GET events ALL",
+			"request": {
+				"url": "localhost:3000/events",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VERY_SECRET_PASSWORD",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET events by Country",
+			"request": {
+				"url": "localhost:3000/events?country=US",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VERY_SECRET_PASSWORD",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET events by Browser",
+			"request": {
+				"url": "localhost:3000/events?browser=Firefox",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VERY_SECRET_PASSWORD",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET events by PageID",
+			"request": {
+				"url": "localhost:3000/events?pageID=page7be422cf",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VERY_SECRET_PASSWORD",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET events by PageID & Country",
+			"request": {
+				"url": "localhost:3000/events?pageID=page7be422cf&country=FR",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VERY_SECRET_PASSWORD",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET events Wrong password",
+			"request": {
+				"url": "localhost:3000/event?country_name=Ukraine",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "I_THINK_I_KNOW_THE_PASSWORD",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET events by PageID & Country & Browser",
+			"request": {
+				"url": "localhost:3000/events?browser=Firefox&pageID=page22e12212&country=JP",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VERY_SECRET_PASSWORD",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
