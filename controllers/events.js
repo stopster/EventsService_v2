@@ -19,6 +19,13 @@ router.get('/', authentication.required(), (req, res) => {
     });
 });
 
+router.get('/', authentication.failed(), (req, res) => {
+  res.statusCode = 403;
+  res.send('You shall not pass!!');
+
+  log.warn('access', 'Unauthorized access!');
+});
+
 router.post('/', (req, res) => {
   // start billing (counting the duration) as soon as the request starts
   let billing = new Billing();

@@ -3,6 +3,7 @@
 const fs = require('fs');
 
 module.exports = {
+  billingApiUrl: 'http://api.playbuzz.com/eventrepoter-exercise',
   database: {
     host: 'mysql-test.playbuzz.com',
     user: 'root',

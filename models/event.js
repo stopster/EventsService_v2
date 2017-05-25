@@ -3,8 +3,6 @@
 const detectBrowser = require('../helpers/detectBrowser');
 const detectCountry = require('../helpers/detectCountry');
 const mysql = require('mysql');
-const db = global.dbPool;
-const log = global.log;
 
 class Event {
   constructor(config){
@@ -24,6 +22,8 @@ class Event {
   }
 
   save (){
+    const db = global.dbPool;
+
     return this._prepareModel().then(() => {
       return db.query('INSERT INTO events SET ?', this).then((result) => {
         return result.affectedRows > 0;
@@ -34,6 +34,8 @@ class Event {
   }
 
   _prepareModel(){
+    const log = global.log;
+
     return detectCountry(this.userIP).then((result) => {
       this.country = result.reserved? 'N/A': result.country;
     }, (error) => {
@@ -43,6 +45,8 @@ class Event {
   }
 
   static fetch (criteria){
+    const db = global.dbPool;
+
     const allowed = ['pageID', 'browser', 'country'];
     let query = 'SELECT * FROM events';
     let conditions = [];
