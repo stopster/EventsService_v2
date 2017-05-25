@@ -1,1 +1,1 @@
-# node-express-app-structure
+# Events Service
