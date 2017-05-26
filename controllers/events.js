@@ -1,29 +1,30 @@
 'use strict';
 
 const express = require('express');
-const authentication = require('express-authentication');
-const auth = require('../middlewares/auth');
+const Authentication = require('express-authentication');
+const authentication = new Authentication();
+const secretKeyAuth = require('../middlewares/auth');
+const api = authentication.for('api').use(secretKeyAuth);
 
 const router = express.Router();
 const Event = require('../models/event');
 const Billing = require('../models/billing');
 const log = global.log;
 
-router.get('/', auth);
+router.get('/', api);
 
-router.get('/', authentication.required(), (req, res) => {
+router.get('/', api.failed(), (req, res) => {
+  res.statusCode = 403;
+  res.send('You shall not pass!!');
+
+});
+
+router.get('/', api.required(), (req, res) => {
     Event.fetch(req.query).then((events) => {
       res.send(events);
     }, (error) => {
       log.error('storage', 'Can not fetch events. Error: ' + error);
     });
-});
-
-router.get('/', authentication.failed(), (req, res) => {
-  res.statusCode = 403;
-  res.send('You shall not pass!!');
-
-  log.warn('access', 'Try of unauthorized access!');
 });
 
 router.post('/', (req, res) => {
