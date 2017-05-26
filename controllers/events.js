@@ -17,6 +17,7 @@ router.get('/', api.failed(), (req, res) => {
   res.statusCode = 403;
   res.send('You shall not pass!!');
 
+  log.warn('access', 'Try of unauthorized access!');
 });
 
 router.get('/', api.required(), (req, res) => {
