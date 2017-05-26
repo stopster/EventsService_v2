@@ -24,7 +24,6 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-authentication": "^0.3.2",
-    "log": "^1.4.0",
     "npmlog": "^4.1.0",
     "promise-mysql": "^3.0.1",
     "request": "^2.81.0"
