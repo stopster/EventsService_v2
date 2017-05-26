@@ -23,7 +23,7 @@ router.get('/', authentication.failed(), (req, res) => {
   res.statusCode = 403;
   res.send('You shall not pass!!');
 
-  log.warn('access', 'Unauthorized access!');
+  log.warn('access', 'Try of unauthorized access!');
 });
 
 router.post('/', (req, res) => {
@@ -31,35 +31,33 @@ router.post('/', (req, res) => {
   let billing = new Billing();
 
   // create event
-  // not sure, whether these data should be from client data or request object
+  // not sure, whether these fields should be from a client data or a request object
   let eventConfig = Object.assign({}, {
     userIP: req.ip,
     pageReferer: req.header('Referrer')
   }, req.body);
   let event = new Event(eventConfig);
 
-  event.save()
-    .then((result) => {
-      return result; // Return `saved`
-    }, (error) => {
-      log.error('storage', 'Can not save event to DB. Error: ' + error);
-      return false; // Return `saved`
-    }).then((saved) => {
-      billing.linkToEvent(event).save()
-        .then(() => {
-          res.send({
-            id: event.ID,
-            saved: saved,
-            billed: true
-          });
-        }, () => {
-          res.send({
-            id: event.ID,
-            saved: saved,
-            billed: false
-          });
-        });
+  event.save().then((result) => {
+    return result;        // Return `saved`
+  }, (error) => {
+    log.error('storage', 'Can not save event to DB. Error: ' + error);
+    return false;         // Return `saved`
+  }).then((saved) => {    // Process billing in any case (successful saving or not)
+    billing.linkToEvent(event).save().then(() => {
+      res.send({
+        id: event.ID,
+        saved: saved,
+        billed: true
+      });
+    }, () => {
+      res.send({
+        id: event.ID,
+        saved: saved,
+        billed: false
+      });
     });
+  });
 });
 
 module.exports = router;
